@@ -39,6 +39,19 @@ export class Braze {
     android: DeviceEventEmitter
   });
 
+  static getUserId(callback) {
+    if (this.bridge.getUserId) {
+      this.bridge.getUserId((err, res) => {
+        if (err) {
+          console.log(err);
+          callback(null);
+        } else {
+          callback(res);
+        }
+      });
+    }
+  }
+
   /**
    * When launching an iOS application that has previously been force closed, React Native's Linking API doesn't
    * support handling deep links embedded in push notifications. This is due to a race condition on startup between
