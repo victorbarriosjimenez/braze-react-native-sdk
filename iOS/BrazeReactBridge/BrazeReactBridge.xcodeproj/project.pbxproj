@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A0C57C42A245E1400AF7CEF /* BrazeUserWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C57C32A245E1400AF7CEF /* BrazeUserWrapper.swift */; };
 		D4DB659B1D8C973800EFA6B6 /* BrazeReactUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DB659A1D8C973800EFA6B6 /* BrazeReactUtils.m */; };
 		E3D0A75E1C668BB90027828A /* BrazeReactBridge.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3D0A75D1C668BB90027828A /* BrazeReactBridge.h */; };
 		E3D0A7601C668BB90027828A /* BrazeReactBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D0A75F1C668BB90027828A /* BrazeReactBridge.m */; };
@@ -26,6 +27,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A0C57C22A245E1400AF7CEF /* BrazeReactBridge-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BrazeReactBridge-Bridging-Header.h"; sourceTree = "<group>"; };
+		2A0C57C32A245E1400AF7CEF /* BrazeUserWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrazeUserWrapper.swift; sourceTree = "<group>"; };
 		D4DB65991D8C973800EFA6B6 /* BrazeReactUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrazeReactUtils.h; sourceTree = "<group>"; };
 		D4DB659A1D8C973800EFA6B6 /* BrazeReactUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrazeReactUtils.m; sourceTree = "<group>"; };
 		E3D0A75A1C668BB90027828A /* libBrazeReactBridge.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBrazeReactBridge.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +70,8 @@
 				E3D0A75F1C668BB90027828A /* BrazeReactBridge.m */,
 				D4DB65991D8C973800EFA6B6 /* BrazeReactUtils.h */,
 				D4DB659A1D8C973800EFA6B6 /* BrazeReactUtils.m */,
+				2A0C57C32A245E1400AF7CEF /* BrazeUserWrapper.swift */,
+				2A0C57C22A245E1400AF7CEF /* BrazeReactBridge-Bridging-Header.h */,
 			);
 			path = BrazeReactBridge;
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 				TargetAttributes = {
 					E3D0A7591C668BB90027828A = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -110,6 +116,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = E3D0A7511C668BB90027828A;
@@ -127,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A0C57C42A245E1400AF7CEF /* BrazeUserWrapper.swift in Sources */,
 				D4DB659B1D8C973800EFA6B6 /* BrazeReactUtils.m in Sources */,
 				E3D0A7601C668BB90027828A /* BrazeReactBridge.m in Sources */,
 			);
@@ -218,36 +226,39 @@
 		E3D0A7641C668BB90027828A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../react-native/React/**",
 					"$(SRCROOT)/../../../../ios/Pods/Headers/**",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "BrazeReactBridge/BrazeReactBridge-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		E3D0A7651C668BB90027828A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../react-native/React/**",
 					"$(SRCROOT)/../../../../ios/Pods/Headers/**",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "BrazeReactBridge/BrazeReactBridge-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

@@ -13,6 +13,8 @@ import { EmitterSubscription } from 'react-native';
  */
 export function getInitialURL(callback: (deepLink: string) => void): void;
 
+export function getUserId(callback: () => void): void;
+
 /**
  * Returns a unique device ID for install tracking. This method is equivalent to calling
  * Braze.getInstallTrackingId() on Android and returns the IDFV on iOS.
