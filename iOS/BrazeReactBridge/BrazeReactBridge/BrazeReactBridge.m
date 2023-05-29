@@ -5,6 +5,7 @@
 #import <UserNotifications/UserNotifications.h>
 
 #import "BrazeReactUtils.h"
+#import "BrazeUserWrapper-Swift.h"
 
 @import BrazeUI;
 @import BrazeLocation;
@@ -130,6 +131,20 @@ static Braze *braze;
 
 RCT_EXPORT_METHOD(setSDKFlavor) {
   RCTLogInfo(@"No-op on iOS. SDK flavor must be set using the 'Braze.Configuration' object at SDK initialization.");
+}
+
+
+RCT_EXPORT_METHOD(getUserId:(RCTResponseSenderBlock)callback) {
+  RCTLogInfo(@"Get user called");
+  BrazeUserWrapper *wrapper = [BrazeUserWrapper new];
+  [wrapper getUserId:^(NSString *userId) {
+    RCTLogInfo(@"ID is:  %@", userId);
+    if (userId == nil) {
+      [self reportResultWithCallback:callback andError:nil andResult:nil];
+    } else {
+      [self reportResultWithCallback:callback andError:nil andResult:userId];
+    }
+  }];
 }
 
 RCT_EXPORT_METHOD(setMetadata) {

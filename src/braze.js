@@ -39,6 +39,19 @@ export class Braze {
     android: DeviceEventEmitter
   });
 
+  static getUserId() {
+    if (this.bridge.getUserId) {
+      this.bridge.getUserId((err, res) => {
+        if (err) {
+          console.log(err);
+          callback(null);
+        } else {
+          callback(res);
+        }
+      });
+    }
+  }
+
   /**
    * When launching an iOS application that has previously been force closed, React Native's Linking API doesn't
    * support handling deep links embedded in push notifications. This is due to a race condition on startup between
@@ -68,11 +81,7 @@ export class Braze {
    * @param {function(error, result)} callback - A callback that receives the function call result.
    */
   static getInstallTrackingId(callback) {
-    callFunctionWithCallback(
-      this.bridge.getInstallTrackingId,
-      [],
-      callback
-    );
+    callFunctionWithCallback(this.bridge.getInstallTrackingId, [], callback);
   }
 
   /**
@@ -112,10 +121,7 @@ export class Braze {
   static changeUser(userId, signature) {
     this.bridge.setSDKFlavor();
     this.bridge.setMetadata();
-    this.bridge.changeUser(
-      userId,
-      signature != null ? signature : null
-    );
+    this.bridge.changeUser(userId, signature != null ? signature : null);
   }
 
   /**
@@ -169,10 +175,7 @@ export class Braze {
    * @param {boolean} adTrackingEnabled - Whether ad-tracking is enabled for the Google Advertising ID
    */
   static setGoogleAdvertisingId(googleAdvertisingId, adTrackingEnabled) {
-    this.bridge.setGoogleAdvertisingId(
-      googleAdvertisingId,
-      adTrackingEnabled
-    );
+    this.bridge.setGoogleAdvertisingId(googleAdvertisingId, adTrackingEnabled);
   }
 
   /**
@@ -335,11 +338,7 @@ export class Braze {
    * @param {function(error, result)} callback - A callback that receives the function call result.
    */
   static setGender(gender, callback) {
-    callFunctionWithCallback(
-      this.bridge.setGender,
-      [gender],
-      callback
-    );
+    callFunctionWithCallback(this.bridge.setGender, [gender], callback);
   }
 
   /**
@@ -500,12 +499,7 @@ export class Braze {
    * @param {string} creative - The attribution creative
    */
   static setAttributionData(network, campaign, adGroup, creative) {
-    this.bridge.setAttributionData(
-      network,
-      campaign,
-      adGroup,
-      creative
-    );
+    this.bridge.setAttributionData(network, campaign, adGroup, creative);
   }
 
   // News Feed
@@ -708,8 +702,11 @@ export class Braze {
     }
     this.bridge.subscribeToInAppMessage(withBrazeUI);
 
-    if (typeof subscriber === "function") {
-      return this.eventEmitter.addListener(Events.IN_APP_MESSAGE_RECEIVED, subscriber);
+    if (typeof subscriber === 'function') {
+      return this.eventEmitter.addListener(
+        Events.IN_APP_MESSAGE_RECEIVED,
+        subscriber
+      );
     }
   }
 
@@ -745,10 +742,7 @@ export class Braze {
    */
   static logInAppMessageButtonClicked(inAppMessage, buttonId) {
     const inAppMessageString = inAppMessage.toString();
-    this.bridge.logInAppMessageButtonClicked(
-      inAppMessageString,
-      buttonId
-    );
+    this.bridge.logInAppMessageButtonClicked(inAppMessageString, buttonId);
   }
 
   /**
@@ -759,11 +753,11 @@ export class Braze {
   static requestPushPermission(permissionOptions) {
     if (!permissionOptions) {
       permissionOptions = {
-        "alert": true,
-        "badge": true,
-        "sound": true,
-        "provisional": false
-      }
+        alert: true,
+        badge: true,
+        sound: true,
+        provisional: false
+      };
     }
     this.bridge.requestPushPermission(permissionOptions);
   }
