@@ -134,19 +134,6 @@ RCT_EXPORT_METHOD(setSDKFlavor) {
 }
 
 
-RCT_EXPORT_METHOD(getUserId:(RCTResponseSenderBlock)callback) {
-  RCTLogInfo(@"Get user called");
-  BrazeUserWrapper *wrapper = [BrazeUserWrapper new];
-  [wrapper getUserId:^(NSString *userId) {
-    RCTLogInfo(@"ID is:  %@", userId);
-    if (userId == nil) {
-      [self reportResultWithCallback:callback andError:nil andResult:nil];
-    } else {
-      [self reportResultWithCallback:callback andError:nil andResult:userId];
-    }
-  }];
-}
-
 RCT_EXPORT_METHOD(setMetadata) {
   RCTLogInfo(@"No-op on iOS. SDK metadata must be set using the 'Braze.Configuration' object at SDK initialization.");
 }
