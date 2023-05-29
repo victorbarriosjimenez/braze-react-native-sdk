@@ -5,7 +5,7 @@
 #import <UserNotifications/UserNotifications.h>
 
 #import "BrazeReactUtils.h"
-#import "BrazeReactBridge-Swift.h"
+#import "BrazeReactBridge-Bridging-Header.h"
 
 @import BrazeUI;
 @import BrazeLocation;
