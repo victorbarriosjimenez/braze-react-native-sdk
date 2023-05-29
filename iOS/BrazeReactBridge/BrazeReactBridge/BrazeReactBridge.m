@@ -153,7 +153,7 @@ RCT_EXPORT_METHOD(getInstallTrackingId:(RCTResponseSenderBlock)callback) {
 }
 
 RCT_EXPORT_METHOD(changeUser:(NSString *)userId sdkAuthSignature:(nullable NSString *)signature) {
-  RCTLogInfo(@"braze changeUser with values %@ %@", userId, signature);
+  RCTLogInfo(@"braze changeUserrrrrrrrrrrr with values %@ %@", userId, signature);
   [braze changeUser:userId sdkAuthSignature:signature];
 }
 
